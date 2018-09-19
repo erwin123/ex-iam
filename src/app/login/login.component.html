@@ -1,0 +1,35 @@
+<div class="login-container">
+    <div class="clr-row clr-justify-content-center">
+        <div class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-xl-4">
+            <div class="login-form">
+                <div class="title skewed">
+                    Identity <br />Management
+                </div>
+                <form class="login" (ngSubmit)="login()">
+                    <div class="login-group">
+                        <label for="login_username" class="clr-control-label">Username</label>
+                        <div class="clr-control-container">
+                            <div class="clr-input-wrapper">
+                                <input [attr.disabled]="lock ? 'disabled' : null" class="username" type="text" id="login_username"
+                                    placeholder="Your authentic username" name="username" [(ngModel)]="username"></div>
+                        </div>
+                        <label for="login_password" class="clr-control-label">Password</label>
+                        <div class="clr-control-container">
+                            <div class="clr-input-wrapper">
+                                <input [attr.disabled]="lock ? 'disabled' : null" class="password" type="password" id="login_password"
+                                    placeholder="Secret word to login" name="password" [(ngModel)]="password"></div>
+                        </div>
+                        <div *ngIf="hasError" style="color:red">
+                            {{message}}
+                        </div>
+                        <button [clrLoading]="submitBtnState" [attr.disabled]="lock ? 'disabled' : null" type="button"
+                            (click)="login()" class="btn btn-primary btn-block">LOGIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright © 2015-2018 <br />EXPERD PT. Sarana Exhirindo
+    </div>
+</div>
