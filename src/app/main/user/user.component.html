@@ -1,0 +1,83 @@
+<div class="child-container">
+    <div class="clr-row">
+        <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-3 clr-col-xl-3">
+            <div class="card">
+                <div class="card-block">
+                    <form class="frm-create" (keydown)="keyDownFunction($event)">
+                        <div class="frm-group">
+                            <label for="username" class="clr-control-label">Username</label>
+                            <div class="clr-control-container">
+                                <div class="clr-input-wrapper">
+                                    <input [attr.disabled]="lock ? 'disabled' : null" class="username" type="text" id="username"
+                                        placeholder="Authentic username" name="username" [(ngModel)]="username"></div>
+                            </div>
+                            <label for="password" class="clr-control-label">Password</label>
+                            <div class="clr-control-container">
+                                <div class="clr-input-wrapper">
+                                    <input [attr.disabled]="lock ? 'disabled' : null" class="password" type="password"
+                                        id="password" placeholder="Secret word" name="password" [(ngModel)]="password"></div>
+                            </div>
+                            <label for="cpassword" class="clr-control-label">Confirm Password</label>
+                            <div class="clr-control-container">
+                                <div class="clr-input-wrapper">
+                                    <input [attr.disabled]="lock ? 'disabled' : null" class="cpassword" type="password"
+                                        id="cpassword" placeholder="Confirmation secret word" name="cpassword"
+                                        [(ngModel)]="cpassword"></div>
+                            </div>
+                            <div *ngIf="hasError" style="color:red">
+                                {{message}}
+                            </div>
+                            <button [clrLoading]="submitBtnState" [attr.disabled]="lock ? 'disabled' : null" type="button"
+                                (click)="login()" class="btn btn-primary btn-block">SAVE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-9 clr-col-xl-9">
+            <div class="card">
+                <div class="card-header">
+                    Existing Data
+                </div>
+                <div class="card-block">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Decimal</th>
+                                <th>Hexadecimal</th>
+                                <th>Binary</th>
+                                <th>Roman Numeral</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>I</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>101</td>
+                                <td>V</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>A</td>
+                                <td>1010</td>
+                                <td>X</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>F</td>
+                                <td>1111</td>
+                                <td>XV</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

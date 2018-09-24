@@ -24,7 +24,7 @@
                     <div class="layer"></div>
                     <div class="layer"></div>
                 </div>
-                <form class="login" (ngSubmit)="login()">
+                <form class="login" (keydown)="keyDownFunction($event)">
                     <div class="login-group">
                         <label for="login_username" class="clr-control-label">Username</label>
                         <div class="clr-control-container">

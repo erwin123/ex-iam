@@ -1,3 +1,11 @@
-<p>
-  main works!
-</p>
+<div class="content-container">
+    <clr-main-container #container>
+
+        <app-header></app-header>
+        <main class="content-area" [@routerTransition]="page.activatedRouteData.state">
+            <router-outlet #page="outlet"></router-outlet>
+        </main>
+        <div>Footer</div>
+
+    </clr-main-container>
+</div>

@@ -1,0 +1,40 @@
+<div *ngIf="traffic" class="progress loop" style="background: #fff !important; font-size: 1px; position: absolute; z-index: 99;">
+    <progress></progress>
+</div>
+<clr-header class="header-1">
+    <div class="branding skewed" style="background-color:#202020;">
+        <a routerLink="/main/anchor" class="nav-link">
+            Identity<br>&nbsp;&nbsp;Management&nbsp;&nbsp;
+        </a>
+    </div>
+    <div class="header-actions" *ngIf="isLogin">
+        <clr-dropdown>
+            <button class="nav-icon" clrDropdownTrigger>
+                <clr-icon shape="user" class="is-solid"></clr-icon>
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                <a routerLink="/main/chpwd" style="color:#000" class="nav-link" clrDropdownItem>CHANGE PASSWORD</a>
+                <a (click)="logout()" clrDropdownItem>LOG OUT</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+    </div>
+</clr-header>
+
+<nav class="header-nav menus" [clr-nav-level]="1">
+    <a routerLink="/main/landing" class="nav-link">
+        <clr-icon shape="home" class="is-solid" size="18" style="margin-bottom:7px"></clr-icon> HOME
+    </a>
+    <a routerLink="/main/user" class="nav-link">
+        <clr-icon shape="users" class="is-solid" size="18" style="margin-bottom:3px"></clr-icon> USER
+    </a>
+    <a routerLink="/main/application" class="nav-link">
+        <clr-icon shape="vmw-app" class="is-solid" size="18" style="margin-bottom:3px"></clr-icon> APPS
+    </a>
+    <a routerLink="/main/contact" class="nav-link">
+        <clr-icon shape="phone-handset" class="is-solid" size="18" style="margin-bottom:3px"></clr-icon> HELP
+    </a>
+    <a (click)="logout()" class="nav-link" style="color:rgb(255, 0, 85)">
+        <clr-icon shape="logout" class="is-solid" size="18" style="margin-bottom:3px"></clr-icon> LOG OUT
+    </a>
+</nav>

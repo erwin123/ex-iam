@@ -1,0 +1,42 @@
+.header-nav {
+    font-size: 18px !important;
+}
+
+.header-1 {
+    background: #202020;
+}
+.menus{
+    background: #ccc;
+}
+.menus a {
+    margin: 15px;
+    color: black;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.menus a clr-icon{
+    margin-right: 10px;
+}
+
+.header .branding>.nav-link, .header .branding>a, header .branding>.nav-link, header .branding>a {
+    font-family: 'Pacifico';
+    color: rgb(255, 0, 76);
+    text-shadow:
+    3px 3px 0 #e2e2e2,
+    -1px -1px 0 #e2e2e2,  
+     1px -1px 0 #e2e2e2,
+     -1px 1px 0 #e2e2e2,
+      1px 1px 0 #e2e2e2;
+    font-size: 19px;
+    line-height: 18px;
+    margin-top: -5px;
+}
+
+.skewed a{
+    -webkit-transform: rotate(-10deg) skew(-10deg, 0);
+    -moz-transform: rotate(-10deg) skew(-10deg, 0);
+    -ms-transform: rotate(-10deg) skew(-10deg, 0);
+    -o-transform: rotate(-10deg) skew(-10deg, 0);
+    transform: rotate(-10deg) skew(-10deg, 0);
+}

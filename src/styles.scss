@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('//fonts.googleapis.com/css?family=Pacifico');
 @font-face {
     font-family: 'robotoreg';
     src: url('assets/roboto-condensed.regular.woff') format('woff'), /* Pretty Modern Browsers */
@@ -18,7 +19,7 @@
 }
 
 body {
-    background-image: linear-gradient( to right,  rgba(148,233,194,1) 11.2%, rgba(224,235,186,1) 91.1% );
+    background-image: linear-gradient( to right,  #94e9c2 11.2%, rgba(224,235,186,1) 91.1% );
 }
 
 .btn-primary{
@@ -26,3 +27,23 @@ body {
     color: #fff !important;
 }
 
+
+
+.child-container{
+    margin:10px 3px 3px 3px;
+    min-height: calc(100vh - 125px);
+}
+
+
+.clr-row{
+    margin:0 !important;
+}
+
+.frm-group * {
+    display: block;
+    width: 100%;
+}
+
+.frm-group div {
+    margin-bottom: 38px;
+}
