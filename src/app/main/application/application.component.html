@@ -1,3 +1,48 @@
-<p>
-  application works!
-</p>
+<div class="child-container">
+  <div class="clr-row">
+      <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-3 clr-col-xl-3">
+          <div class="card">
+              <div class="card-block">
+                  <form class="frm-create" (keydown)="keyDownFunction($event)">
+                      <div class="frm-group">
+                          <label for="appsName" class="clr-control-label">Application Name</label>
+                          <div class="clr-control-container">
+                              <div class="clr-input-wrapper">
+                                  <input [attr.disabled]="lock ? 'disabled' : null" class="appsName" type="text" id="appsName"
+                                      placeholder="Authentic Apps Name" name="appsName" [(ngModel)]="appsName"></div>
+                          </div>
+                          <label for="appsDesc" class="clr-control-label">Application Description</label>
+                          <div class="clr-control-container">
+                              <div class="clr-input-wrapper">
+                                  <input [attr.disabled]="lock ? 'disabled' : null" class="appsDesc" type="text" id="appsDesc"
+                                      placeholder="Description of Apps (Nice to have)" name="appsDesc" [(ngModel)]="appsDesc"></div>
+                          </div>
+                          <button type="button" (click)="addApps()" class="btn btn-primary btn-block"
+                              [attr.disabled]="lock || !valid ? 'disabled' : null">SAVE</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="card" style="margin-top:33px;margin-bottom: 10px;">
+              <div class="card-block">
+                  <div class="card-title">
+                      Import Data
+                  </div>
+                  <app-drop-zone (dataDrop)="catchData($event)"></app-drop-zone>
+              </div>
+          </div>
+      </div>
+
+      <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-9 clr-col-xl-9">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-title" style="margin-bottom: 0px !important;">
+                    Data Application &nbsp;&nbsp;
+                </div>
+                <app-table-apps [apps]="apps" (appAction)="appsAction($event)"></app-table-apps>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+

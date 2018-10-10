@@ -1,0 +1,29 @@
+<div class="loader" *ngIf="!apps">
+  <span class="spinner spinner-inline">
+    Loading...
+  </span>
+  <span>
+    Loading...
+  </span>
+</div>
+<clr-datagrid *ngIf="apps">
+  <clr-dg-column [clrDgField]="'AppName'">Application Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'AppCode'">Application Code</clr-dg-column>
+  <clr-dg-column [clrDgField]="'AppDesc'">Descriptions</clr-dg-column>
+  <clr-dg-row *clrDgItems="let app of apps">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="onAction(app.AppCode, 1)">Edit</button>
+      <button class="action-item" (click)="onAction(app.AppCode, 0)">Delete</button>
+    </clr-dg-action-overflow>
+    <clr-dg-cell>{{app.AppName}}</clr-dg-cell>
+    <clr-dg-cell>{{app.AppCode}}</clr-dg-cell>
+    <clr-dg-cell>{{app.AppDesc}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} apps
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

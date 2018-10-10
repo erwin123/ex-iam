@@ -1,0 +1,11 @@
+<file-drop headertext="" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+  <span>
+    <div class="upload-btn-wrapper">
+      <button class="btn">
+        <clr-icon shape="upload"></clr-icon>
+        Click here or drop file
+      </button>
+      <input type="file" (change)="onFileChange($event)" multiple="false" [(ngModel)]="fl" />
+    </div>
+  </span>
+</file-drop>

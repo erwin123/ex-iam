@@ -18,9 +18,6 @@
     src: url('assets/roboto-condensed.bold-italic.woff') format('woff'), /* Pretty Modern Browsers */
 }
 
-body {
-    background-image: linear-gradient( to right,  #94e9c2 11.2%, rgba(224,235,186,1) 91.1% );
-}
 
 .btn-primary{
     background: #202020 !important;
@@ -31,7 +28,7 @@ body {
 
 .child-container{
     margin:10px 3px 3px 3px;
-    min-height: calc(100vh - 125px);
+    min-height: calc(100vh - 135px);
 }
 
 
@@ -46,4 +43,15 @@ body {
 
 .frm-group div {
     margin-bottom: 38px;
+}
+
+.drop-zone{
+    margin: auto;
+    height: 500px;
+    border: 1px dotted #858585 !important;
+    border-radius: 30px;
+}
+
+.card{
+    margin-top:0px;
 }

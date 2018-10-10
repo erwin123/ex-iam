@@ -1,0 +1,39 @@
+<div class="loader" *ngIf="!users">
+  <span class="spinner spinner-inline">
+    Loading...
+  </span>
+  <span>
+    Loading...
+  </span>
+</div>
+<clr-datagrid *ngIf="users">
+  <clr-dg-column [clrDgField]="'Username'">Username</clr-dg-column>
+  <clr-dg-column [clrDgField]="'FirstName'">First Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'LastName'">Last Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'Email'">Email</clr-dg-column>
+  <clr-dg-column [clrDgField]="'Phone'">Phone</clr-dg-column>
+  <clr-dg-column [clrDgField]="'Gender'">Gender</clr-dg-column>
+  <clr-dg-column [clrDgField]="'BornDate'">Birth Date</clr-dg-column>
+  <clr-dg-column [clrDgField]="'IsActive'">Is Active</clr-dg-column>
+  <clr-dg-row *clrDgItems="let user of users">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="onAction(user.Username, 1)">Edit</button>
+      <button class="action-item" (click)="onAction(user.Username, 0)">Delete</button>
+    </clr-dg-action-overflow>
+    <clr-dg-cell>{{user.Username}}</clr-dg-cell>
+    <clr-dg-cell>{{user.FirstName}}</clr-dg-cell>
+    <clr-dg-cell>{{user.LastName}}</clr-dg-cell>
+    <clr-dg-cell>{{user.Email}}</clr-dg-cell>
+    <clr-dg-cell>{{user.Phone}}</clr-dg-cell>
+    <clr-dg-cell>{{user.Gender}}</clr-dg-cell>
+    <clr-dg-cell>{{user.BornDate | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.IsActive}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

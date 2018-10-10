@@ -1,0 +1,11 @@
+.modal-form input{
+    display: block;
+    width: 100%;
+    margin: 15px;
+}
+.clr-radio-wrapper .clr-control-label{
+    display: inline;
+    margin-left: 20%;
+    font-size: 22px;
+    color: crimson;
+}

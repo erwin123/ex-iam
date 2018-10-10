@@ -20,64 +20,89 @@
                             <label for="cpassword" class="clr-control-label">Confirm Password</label>
                             <div class="clr-control-container">
                                 <div class="clr-input-wrapper">
-                                    <input [attr.disabled]="lock ? 'disabled' : null" class="cpassword" type="password"
+                                    <input [attr.disabled]="lock? 'disabled' : null" class="cpassword" type="password"
                                         id="cpassword" placeholder="Confirmation secret word" name="cpassword"
                                         [(ngModel)]="cpassword"></div>
                             </div>
-                            <div *ngIf="hasError" style="color:red">
-                                {{message}}
-                            </div>
-                            <button [clrLoading]="submitBtnState" [attr.disabled]="lock ? 'disabled' : null" type="button"
-                                (click)="login()" class="btn btn-primary btn-block">SAVE</button>
+                            <button type="button" (click)="addManualAccount()" class="btn btn-primary btn-block"
+                                [attr.disabled]="lock || !valid ? 'disabled' : null">SAVE</button>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="card" style="margin-top:33px;margin-bottom: 10px;">
+                <div class="card-block">
+                    <div class="card-title">
+                        Import Data
+                    </div>
+                    <app-drop-zone (dataDrop)="catchData($event)"></app-drop-zone>
                 </div>
             </div>
         </div>
         <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-9 clr-col-xl-9">
             <div class="card">
-                <div class="card-header">
-                    Existing Data
-                </div>
                 <div class="card-block">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Decimal</th>
-                                <th>Hexadecimal</th>
-                                <th>Binary</th>
-                                <th>Roman Numeral</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>I</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>101</td>
-                                <td>V</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>A</td>
-                                <td>1010</td>
-                                <td>X</td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>F</td>
-                                <td>1111</td>
-                                <td>XV</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="card-title" style="margin-bottom: 0px !important;">
+                        Data User &nbsp;&nbsp;
+                        <clr-signpost *ngIf="showImportButton">
+                            <input type="text" [(ngModel)]="defaultPwd" placeholder="Default password for new user"
+                                class="clr-input" size="25">
+                            <clr-icon shape="unknown-status" class="is-solid" clrSignpostTrigger>
+                            </clr-icon>
+                            <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
+                                Leave it blank it will give you "123456" as a default
+                            </clr-signpost-content>
+                        </clr-signpost>
+                        &nbsp;
+                        <button *ngIf="showImportButton" type="button" title="SAVE IMPORT" class="btn btn-sm btn-primary"
+                            aria-label="reload" (click)="importData()">
+                            <clr-icon aria-hidden="true" shape="download"></clr-icon>
+                            save import
+                        </button>
+
+                        <button type="button" title="reload" class="close" aria-label="reload" (click)="getUser()">
+                            <clr-icon aria-hidden="true" shape="refresh"></clr-icon>
+                        </button>
+                    </div>
+                    <app-table-user [users]="usersJoined" (userAction)="userActionTable($event)"></app-table-user>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
+
+<clr-modal [(clrModalOpen)]="modalEdit" [clrModalClosable]="false" [clrModalSize]="'sm'">
+    <h3 class="modal-title">Detail user <span style="color:#ff0055">{{usernameAction}}</span></h3>
+    <div class="modal-body modal-form">
+        <input type="text" [(ngModel)]="userDetail.FirstName" placeholder="First Name" class="clr-input">
+        <input type="text" [(ngModel)]="userDetail.LastName" placeholder="Last Name" class="clr-input">
+        <input type="date" (ngModelChange)="changeDate($event)" clrDate placeholder="Birth Date" [(ngModel)]="userDetail.BornDate">
+        <input type="text" [(ngModel)]="userDetail.Phone" placeholder="Phone" class="clr-input">
+        <input type="text" [(ngModel)]="userDetail.Email" placeholder="Email" class="clr-input">
+        <clr-radio-wrapper>
+            <input [(ngModel)]="userDetail.Gender" value="M" type="radio" clrRadio name="options" />
+            <label><i class="fa fa-male" aria-hidden="true"></i></label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+            <input [(ngModel)]="userDetail.Gender" value="F" type="radio" clrRadio name="options" />
+            <label><i class="fa fa-female" aria-hidden="true"></i></label>
+        </clr-radio-wrapper>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="modalEdit = false;usernameAction='';">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="putUserDetail()">Ok</button>
+    </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="modalDelete" [clrModalClosable]="false" [clrModalSize]="'sm'">
+    <h3 class="modal-title">Confirmation Delete</h3>
+    <div class="modal-body">
+        <p>Are you sure want to delete this user?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="modalDelete = false;usernameAction='';">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="deleteUser()">Ok</button>
+    </div>
+</clr-modal>

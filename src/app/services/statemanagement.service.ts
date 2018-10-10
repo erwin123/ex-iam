@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class StatemanagementService {
-  paramChange: EventEmitter<boolean> = new EventEmitter(false);
+  anyGlobalMessage: EventEmitter<boolean> = new EventEmitter(false);
+  globalMessage: EventEmitter<string> = new EventEmitter(false);
 
   private existTraffic = new BehaviorSubject<boolean>(false);
   currentExistTraffic = this.existTraffic.asObservable();
@@ -14,9 +15,7 @@ export class StatemanagementService {
   private stateLogin = new BehaviorSubject<boolean>(localStorage.getItem('currentUser') ? true : false);
   currentStateLogin = this.stateLogin.asObservable();
 
-  constructor(private router: Router) { 
-    
-  }
+  constructor(private router: Router) { }
 
   setCurrentStateLogin(val?: string) {
     if (val) {
@@ -29,9 +28,18 @@ export class StatemanagementService {
     }
   }
 
-  setParamChange(val) {
-    this.paramChange.emit(val);
+  setIsGlobalMessage(val) {
+    this.anyGlobalMessage.emit(val);
   };
+
+  setglobalMessage(val) {
+    this.globalMessage.emit(val);
+  };
+
+  clearError(){
+    this.anyGlobalMessage.emit(false);
+    this.globalMessage.emit("");
+  }
   
   setTraffic(existTraffic: boolean) {
     this.existTraffic.next(existTraffic);

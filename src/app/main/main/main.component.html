@@ -2,10 +2,29 @@
     <clr-main-container #container>
 
         <app-header></app-header>
+        <div class="alert alert-app-level" [class.alert-warning]="warning" [class.alert-success]="success" *ngIf="anyGlobalMessage">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        {{globalMessage}}
+                    </div>
+                    <div class="alert-actions">
+                        <!-- <button class="btn alert-action" (click)="relaseError()">reload</button> -->
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close" (click)="relaseError()">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
         <main class="content-area" [@routerTransition]="page.activatedRouteData.state">
             <router-outlet #page="outlet"></router-outlet>
+            
         </main>
-        <div>Footer</div>
-
+        
+        <div class="footer">Experd Consultant 2018</div>
     </clr-main-container>
 </div>

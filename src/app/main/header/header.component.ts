@@ -31,7 +31,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
-    this.stateService.setParamChange(false);
     this.router.navigate(['/login']);
     setTimeout(() => {
       window.location.href = (this.platformLocation as any).location.origin;

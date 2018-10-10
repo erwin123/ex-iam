@@ -26,8 +26,11 @@
     "@clr/icons": "^0.13.1-patch.1",
     "@clr/ui": "^0.13.1-patch.1",
     "@webcomponents/custom-elements": "^1.0.0",
+    "array-join": "^2.3.0",
     "core-js": "^2.5.4",
+    "ngx-file-drop": "^4.0.6",
     "rxjs": "^6.0.0",
+    "xlsx": "^0.14.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

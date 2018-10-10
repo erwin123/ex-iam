@@ -1,0 +1,20 @@
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    color: rgb(255, 0, 85);
+    background-color: white;
+    border: none;
+    font-size: 9px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}

@@ -17,6 +17,10 @@ import { FormsModule }   from '@angular/forms';
 import { HeaderComponent } from './main/header/header.component';
 import { UserComponent } from './main/user/user.component';
 import { ApplicationComponent } from './main/application/application.component';
+import { TableUserComponent } from './table-user/table-user.component';
+import { FileDropModule } from 'ngx-file-drop';
+import { DropZoneComponent } from './drop-zone/drop-zone.component';
+import { TableAppsComponent } from './table-apps/table-apps.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { ApplicationComponent } from './main/application/application.component';
     LandingComponent,
     HeaderComponent,
     UserComponent,
-    ApplicationComponent
+    ApplicationComponent,
+    TableUserComponent,
+    DropZoneComponent,
+    TableAppsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +44,8 @@ import { ApplicationComponent } from './main/application/application.component';
     ClrFormsNextModule,
     FormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    FileDropModule
   ],
   providers: [AuthguardService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
